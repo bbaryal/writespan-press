@@ -9,7 +9,7 @@ const categories = [
     icon: '🎓',
     description: 'Advanced composition, first-year writing, and disciplinary writing courses for undergraduate students.',
     books: [
-      { title: 'Writing with Authority', subtitle: 'Rhetoric, Research, and Voice', course: 'Advanced Composition · Upper Division Writing', status: 'Available Now', available: true, href: '/books/writing-with-authority' },
+      { title: 'Writing with Intention', subtitle: 'Rhetoric, Research, and Voice', course: 'Advanced Composition · Upper Division Writing', status: 'Available Now', available: true, href: '/books/writing-with-authority' },
       { title: 'Writing from Life', subtitle: 'A Complete First-Year Composition Course', course: 'First-Year Composition · College Writing', status: 'Coming Soon', available: false, href: '#' },
     ],
   },
@@ -250,7 +250,7 @@ export default function HomePage() {
 
             <div className="feat-card" aria-label="Featured book">
               <div className="feat-label">New Release</div>
-              <div className="feat-title">Writing with Authority</div>
+              <div className="feat-title">Writing with Intention</div>
               <div className="feat-sub">Rhetoric, Research, and Voice</div>
               <div className="feat-badges">
                 <span className="badge badge-sky">Advanced Composition</span>
@@ -341,7 +341,7 @@ export default function HomePage() {
 
         <section className="section cta-sec" aria-labelledby="cta-h">
           <div className="section-inner cta-inner">
-            <h2 className="cta-h2" id="cta-h">Ready to bring <em>Writing with Authority</em><br />to your course?</h2>
+            <h2 className="cta-h2" id="cta-h">Ready to bring <em>Writing with Intention</em><br />to your course?</h2>
             <p className="cta-sub">Request a free instructor desk copy or access your book today. No forms. No wait.</p>
             <div className="cta-btns">
               <a href="/books/writing-with-authority" className="btn-p">View the Textbook →</a>
