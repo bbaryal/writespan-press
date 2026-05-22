@@ -9,8 +9,8 @@ const categories = [
     icon: '🎓',
     description: 'Advanced composition, first-year writing, and disciplinary writing courses for undergraduate students.',
     books: [
-      { title: 'Writing with Intention', subtitle: 'Rhetoric, Research, and Voice', course: 'Advanced Composition · Upper Division Writing', status: 'Available Now', available: true, href: '/books/writing-with-authority' },
-      { title: 'Writing from Life', subtitle: 'A Complete First-Year Composition Course', course: 'First-Year Composition · College Writing', status: 'Coming Soon', available: false, href: '#' },
+      { title: 'Writing with Intention', subtitle: 'Rhetoric, Research, and Voice', course: 'Advanced Composition · Upper Division Writing' },
+      { title: 'Writing from Life', subtitle: 'A Complete First-Year Composition Course', course: 'First-Year Composition · College Writing' },
     ],
   },
   { id: 'k12', label: 'K–12 Schools', icon: '📚', description: 'Writing curriculum by grade level, designed for classroom teachers and school writing programs.', books: [] },
@@ -22,7 +22,6 @@ const features = [
   { icon: '⚡', title: 'Truly Interactive', body: 'Not a PDF. Embedded quizzes, videos, discussion prompts, and assignments — all in one place.' },
   { icon: '📱', title: 'Works Everywhere', body: 'Phone, tablet, or desktop. Beautiful and readable on any screen, anywhere.' },
   { icon: '🎯', title: 'Built by Educators', body: 'Every title is designed by experienced university faculty — not committees selling supplements.' },
-  { icon: '🔓', title: 'No Hidden Costs', body: 'One access code. Everything included. No companion websites, no extra workbooks.' },
 ]
 
 export default function HomePage() {
@@ -131,17 +130,27 @@ export default function HomePage() {
         .book-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--sky));opacity:0;transition:opacity var(--t);}
         .book-card:hover{border-color:var(--sky-dark);transform:translateY(-4px);box-shadow:var(--shadow-lg);}
         .book-card:hover::before{opacity:1;}
-        .book-status{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
-        .s-yes{color:#059669;}.s-no{color:var(--muted);}
+        .book-status{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;color:var(--sky-dark);}
         .book-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:6px;}
         .book-sub{font-size:13px;color:var(--muted);font-style:italic;margin-bottom:16px;}
         .book-course{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--sky-dark);background:#EFF6FF;padding:6px 10px;border-radius:6px;margin-bottom:20px;display:inline-block;}
         .book-link{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--navy);text-decoration:none;transition:gap var(--t);}
         .book-link:hover{gap:10px;}
+
+        /* AUTHOR CARD — for "Your textbook here" */
+        .author-card{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border:1.5px solid var(--navy);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;color:white;position:relative;overflow:hidden;transition:transform var(--t),box-shadow var(--t);}
+        .author-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+        .author-card::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle at center,rgba(56,189,248,.18),transparent 70%);pointer-events:none;}
+        .author-status{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;color:var(--sky);}
+        .author-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.2;margin-bottom:6px;color:white;}
+        .author-sub{font-size:13px;color:rgba(255,255,255,.6);font-style:italic;margin-bottom:16px;}
+        .author-link{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--sky);text-decoration:none;transition:gap var(--t);}
+        .author-link:hover{gap:10px;}
+
         .cs-panel{background:var(--warm);border:1.5px dashed var(--border);border-radius:var(--radius);padding:48px 32px;text-align:center;grid-column:1/-1;}
         .cs-icon{font-size:40px;margin-bottom:16px;}
         .cs-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px;}
-        .cs-body{font-size:15px;color:var(--muted);line-height:1.65;max-width:420px;margin:0 auto 24px;}
+        .cs-body{font-size:15px;color:var(--muted);line-height:1.65;max-width:480px;margin:0 auto 24px;}
         .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--navy);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:11px 22px;border-radius:100px;border:1.5px solid var(--navy);text-decoration:none;cursor:pointer;transition:all var(--t);}
         .btn-outline:hover{background:var(--navy);color:white;}
 
@@ -158,7 +167,7 @@ export default function HomePage() {
         .cta-inner{position:relative;z-index:1;}
         .cta-h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,50px);font-weight:900;color:white;line-height:1.1;letter-spacing:-1px;margin-bottom:16px;}
         .cta-h2 em{font-style:italic;color:var(--sky);}
-        .cta-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:36px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7;}
+        .cta-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;}
         .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 
         footer{background:#080F1A;padding:clamp(48px,8vw,80px) clamp(20px,5vw,80px) clamp(32px,5vw,48px);}
@@ -171,9 +180,6 @@ export default function HomePage() {
         .foot-links a:hover{color:white;}
         .foot-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
         .foot-copy{font-size:13px;color:rgba(255,255,255,.3);}
-        .foot-legal{display:flex;gap:20px;list-style:none;}
-        .foot-legal a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;transition:color var(--t);}
-        .foot-legal a:hover{color:rgba(255,255,255,.65);}
 
         @media(max-width:900px){
           .hero-inner{grid-template-columns:1fr;}
@@ -213,8 +219,8 @@ export default function HomePage() {
               <li><a href="#catalog">Catalog</a></li>
               <li><a href="#features">Why WriteSpan Press</a></li>
               <li><a href="https://assess.writespan.com" target="_blank" rel="noopener noreferrer">Assessment Platform</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li><a href="/access" className="nav-cta">Access Your Book</a></li>
+              <li><a href="mailto:info@writespan.com">Contact</a></li>
+              <li><a href="/publish" className="nav-cta">For Authors</a></li>
             </ul>
             <button className={`burger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>
               <span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" />
@@ -226,8 +232,8 @@ export default function HomePage() {
             <a href="#catalog">Catalog</a>
             <a href="#features">Why WriteSpan Press</a>
             <a href="https://assess.writespan.com" target="_blank" rel="noopener noreferrer">Assessment Platform</a>
-            <a href="/contact">Contact</a>
-            <a href="/access" className="mmenu-cta">Access Your Book →</a>
+            <a href="mailto:info@writespan.com">Contact</a>
+            <a href="/publish" className="mmenu-cta">For Authors →</a>
           </nav>
         </div>
       </header>
@@ -239,17 +245,17 @@ export default function HomePage() {
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-inner">
             <div>
-              <div className="eyebrow-hero" aria-hidden="true">WriteSpan Press</div>
+              <div className="eyebrow-hero" aria-hidden="true">Faculty-led textbook publishing</div>
               <h1>Interactive textbooks built for <em>every learner.</em></h1>
-              <p className="hero-sub">From college classrooms to homeschool tables — complete, affordable courseware written by educators, not publishers.</p>
+              <p className="hero-sub">WriteSpan Press is a new faculty-led textbook imprint. We partner with college and university professors to publish their teaching materials as affordable, interactive coursewire.</p>
               <div className="hero-btns">
-                <a href="#catalog" className="btn-p">Browse the Catalog ↓</a>
-                <a href="/access" className="btn-g">Access Your Book →</a>
+                <a href="/publish" className="btn-p">Publish with us →</a>
+                <a href="#catalog" className="btn-g">Browse forthcoming titles ↓</a>
               </div>
             </div>
 
-            <div className="feat-card" aria-label="Featured book">
-              <div className="feat-label">New Release</div>
+            <div className="feat-card" aria-label="Featured forthcoming title">
+              <div className="feat-label">Inaugural Title · In Development</div>
               <div className="feat-title">Writing with Intention</div>
               <div className="feat-sub">Rhetoric, Research, and Voice</div>
               <div className="feat-badges">
@@ -258,18 +264,18 @@ export default function HomePage() {
                 <span className="badge badge-wh">Rhetoric & Research</span>
               </div>
               <div className="feat-list">
-                {['Interactive quizzes and reflection prompts','Embedded videos and reading guides','Three fully scaffolded major assignments','15-assignment bank for instructors','Works in 8-week and 16-week formats'].map(f => (
+                {['Interactive quizzes and reflection prompts','Embedded videos and reading guides','Three fully scaffolded major assignments','15-assignment bank for instructors','Designed for 8-week and 16-week formats'].map(f => (
                   <div className="feat-item" key={f}>{f}</div>
                 ))}
               </div>
-              <a href="/books/writing-with-authority" className="feat-cta">View This Textbook →</a>
+              <a href="mailto:info@writespan.com?subject=Writing%20with%20Intention%20%E2%80%94%20Inquiry" className="feat-cta">Learn more →</a>
             </div>
           </div>
         </section>
 
-        <div className="trust" role="complementary" aria-label="Standards and accreditation">
+        <div className="trust" role="complementary" aria-label="Publishing standards">
           <div className="trust-inner">
-            {['WPA Aligned','CCCC Standards','SRTOL Compliant','ACRL Framework','Bookstore Ready','ISBN Registered'].map(t => (
+            {['WPA Aligned','CCCC Standards','SRTOL Compliant','ACRL Framework','Faculty-Authored','Coursewire-First'].map(t => (
               <span className="trust-item" key={t}>{t}</span>
             ))}
           </div>
@@ -278,8 +284,8 @@ export default function HomePage() {
         <section className="section" id="catalog" aria-labelledby="catalog-h">
           <div className="section-inner">
             <div className="eyebrow">Our Catalog</div>
-            <h2 id="catalog-h">Textbooks for every <em>stage of learning.</em></h2>
-            <p className="sec-sub">WriteSpan Press publishes across four educational markets. Select a category to explore available titles.</p>
+            <h2 id="catalog-h">Forthcoming titles for every <em>stage of learning.</em></h2>
+            <p className="sec-sub">WriteSpan Press is preparing its inaugural list across four educational markets. All titles are currently in development. Select a category to explore.</p>
             <div className="tabs" role="tablist" aria-label="Textbook categories">
               {categories.map(cat => (
                 <button key={cat.id} role="tab" aria-selected={activeCategory === cat.id} aria-controls={`panel-${cat.id}`}
@@ -295,22 +301,30 @@ export default function HomePage() {
                     <div className="books-grid">
                       {cat.books.map(book => (
                         <article className="book-card" key={book.title}>
-                          <div className={`book-status ${book.available ? 's-yes' : 's-no'}`}>{book.available ? '● Available Now' : '○ Coming Soon'}</div>
+                          <div className="book-status">○ In Development</div>
                           <h3 className="book-title">{book.title}</h3>
                           <p className="book-sub">{book.subtitle}</p>
                           <span className="book-course">{book.course}</span>
-                          <a href={book.available ? book.href : '/notify'} className="book-link">
-                            {book.available ? 'View Textbook' : 'Notify Me'} <span aria-hidden="true">→</span>
+                          <a href="mailto:info@writespan.com?subject=Inquiry%20%E2%80%94%20Forthcoming%20Title" className="book-link">
+                            Learn more <span aria-hidden="true">→</span>
                           </a>
                         </article>
                       ))}
+                      <article className="author-card">
+                        <div className="author-status">For Faculty Authors</div>
+                        <h3 className="author-title">Your textbook here</h3>
+                        <p className="author-sub">We are accepting author proposals.</p>
+                        <a href="/publish" className="author-link">
+                          Publish with us <span aria-hidden="true">→</span>
+                        </a>
+                      </article>
                     </div>
                   ) : (
                     <div className="cs-panel" role="status">
                       <div className="cs-icon" aria-hidden="true">{cat.icon}</div>
-                      <h3 className="cs-title">{cat.label} — Coming Soon</h3>
-                      <p className="cs-body">{cat.description} Titles in this category are currently in development.</p>
-                      <a href="/notify" className="btn-outline">Get Notified When Available</a>
+                      <h3 className="cs-title">{cat.label} — Titles in Development</h3>
+                      <p className="cs-body">{cat.description} If you are a faculty author interested in publishing in this market, we want to hear from you.</p>
+                      <a href="/publish" className="btn-outline">Publish with us →</a>
                     </div>
                   )
                 )}
@@ -326,7 +340,7 @@ export default function HomePage() {
               Why WriteSpan Press
             </div>
             <h2 id="feat-h" style={{color:'white'}}>Courseware that actually <em style={{color:'var(--sky)'}}>works.</em></h2>
-            <p className="sec-sub" style={{color:'rgba(255,255,255,.5)'}}>We built what we wished existed — a complete, interactive textbook that respects students and empowers instructors.</p>
+            <p className="sec-sub" style={{color:'rgba(255,255,255,.5)'}}>WriteSpan Press is the textbook imprint of WriteSpan LLC, a Delaware-based education technology company. We are building what we wished existed — complete, interactive textbooks that respect students, empower instructors, and pay their faculty authors.</p>
             <div className="feat-grid">
               {features.map(f => (
                 <div className="f-card" key={f.title}>
@@ -341,11 +355,11 @@ export default function HomePage() {
 
         <section className="section cta-sec" aria-labelledby="cta-h">
           <div className="section-inner cta-inner">
-            <h2 className="cta-h2" id="cta-h">Ready to bring <em>Writing with Intention</em><br />to your course?</h2>
-            <p className="cta-sub">Request a free instructor desk copy or access your book today. No forms. No wait.</p>
+            <h2 className="cta-h2" id="cta-h">Are you a faculty <em>author?</em></h2>
+            <p className="cta-sub">Write the textbook your students need. Keep the rights. Get paid. WriteSpan Press partners with faculty across disciplines to publish their teaching materials as coursewire.</p>
             <div className="cta-btns">
-              <a href="/books/writing-with-authority" className="btn-p">View the Textbook →</a>
-              <a href="/desk-copy" className="btn-g">Request Desk Copy</a>
+              <a href="/publish" className="btn-p">Publish with us →</a>
+              <a href="mailto:info@writespan.com" className="btn-g">Email info@writespan.com</a>
             </div>
           </div>
         </section>
@@ -360,7 +374,7 @@ export default function HomePage() {
                 <span className="logo-top" style={{color:'rgba(255,255,255,.4)'}}>WriteSpan</span>
                 <span className="logo-bottom" style={{color:'white'}}>Press</span>
               </a>
-              <p>An imprint of WriteSpan LLC. Publishing affordable, interactive courseware for college, K–12, homeschooling, and test preparation.</p>
+              <p>An imprint of WriteSpan LLC, a Delaware-based education technology company. We are a faculty-led textbook publisher building affordable, interactive coursewire for college, K–12, homeschooling, and test preparation.</p>
             </div>
             <div>
               <div className="foot-col-title">Catalog</div>
@@ -372,12 +386,10 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <div className="foot-col-title">Instructors</div>
+              <div className="foot-col-title">For Authors</div>
               <ul className="foot-links" role="list">
-                <li><a href="/desk-copy">Request Desk Copy</a></li>
-                <li><a href="/adopt">Adopt a Textbook</a></li>
-                <li><a href="/bookstore">Bookstore Info</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/publish">Publish with WriteSpan</a></li>
+                <li><a href="mailto:info@writespan.com">Contact Us</a></li>
               </ul>
             </div>
             <div>
@@ -385,17 +397,11 @@ export default function HomePage() {
               <ul className="foot-links" role="list">
                 <li><a href="https://assess.writespan.com" target="_blank" rel="noopener noreferrer">Assessment Platform</a></li>
                 <li><a href="https://nurseprep.writespan.com" target="_blank" rel="noopener noreferrer">NursePrep</a></li>
-                <li><a href="/about">About WriteSpan Press</a></li>
-                <li><a href="/access">Access Your Book</a></li>
               </ul>
             </div>
           </div>
           <div className="foot-bottom">
             <p className="foot-copy">© 2026 WriteSpan LLC. All rights reserved. WriteSpan Press is an imprint of WriteSpan LLC.</p>
-            <ul className="foot-legal" role="list">
-              <li><a href="/privacy">Privacy Policy</a></li>
-              <li><a href="/terms">Terms of Service</a></li>
-            </ul>
           </div>
         </div>
       </footer>
